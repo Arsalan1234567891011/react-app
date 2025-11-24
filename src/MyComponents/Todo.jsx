@@ -19,9 +19,7 @@ export default function Todo() {
   return (
     <div className='row' >
       <div className='col-12' >
-        {todos.map(todo => (
-          <TodoItem key={todo.id} todosItems={todo} />
-        ))}
+        <TodoItem  todosItems={todos} />
       </div>
     </div>
   );

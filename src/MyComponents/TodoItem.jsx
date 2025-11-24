@@ -8,15 +8,17 @@ export default function TodoItem(props) {
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Title</th>
-            <th scope="col">Dscription</th> 
+            <th scope="col">Description</th> 
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">{props.todosItems['id']}</th>
-            <td>{props.todosItems['title']}</td>
-            <td>{props.todosItems['description']}</td>
-          </tr>
+          {props.todosItems.map(todo => (
+            <tr key={todo.id}>
+              <td>{todo.id}</td>
+              <td>{todo.title}</td>
+              <td>{todo.description}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>
