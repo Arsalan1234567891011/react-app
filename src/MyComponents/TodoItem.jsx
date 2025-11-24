@@ -3,7 +3,7 @@ import React from 'react'
 export default function TodoItem(props) {
   return (
     <>
-      <table className="table">
+      <table className="table table-bordered table-striped">
         <thead>
           <tr>
             <th scope="col">ID</th>
