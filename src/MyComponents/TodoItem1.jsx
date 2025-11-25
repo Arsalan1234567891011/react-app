@@ -1,31 +1,26 @@
 import React from 'react'
 
-export default function TodoItem1() {
+export default function TodoItem1(props) {
   return (
     <>
-        <ol className="list-group list-group-numbered">
-            <li className="list-group-item d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                <div className="fw-bold">Subheading</div>
-                Cras justo odio
-                </div>
-                <span className="badge bg-primary rounded-pill">14</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                <div className="fw-bold">Subheading</div>
-                Cras justo odio
-                </div>
-                <span className="badge bg-primary rounded-pill">14</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                <div className="fw-bold">Subheading</div>
-                Cras justo odio
-                </div>
-                <span className="badge bg-primary rounded-pill">14</span>
-            </li>
-        </ol>
+      <table className="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th> 
+          </tr>
+        </thead>
+        <tbody>
+          {props.todosItems.map(todo => (
+            <tr key={todo.id}>
+              <td>{todo.id}</td>
+              <td>{todo.title}</td>
+              <td>{todo.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   )
 }
