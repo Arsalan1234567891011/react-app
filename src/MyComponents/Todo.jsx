@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from "react";
 import TodoItem from "./TodoItem.jsx";
 import TodoItem1 from "./TodoItem1.jsx";
+import InformatioForm from "./InformatioForm";
+
 
 export default function Todo() {
   
 const [todos, setTodos] = useState([]);
 useEffect(() => {
-  fetch("http://localhost:8003/api/bussiness?secret_key=176403482720251125014027")
+  const apiUrl = `${import.meta.env.VITE_API_URL}/bussiness?secret_key=${import.meta.env.VITE_SECRET_KEY}`;
+  fetch(apiUrl)
     .then(response => response.json())
     .then(response => {
       setTodos(response.data);
-      //console.log(process.env.REACT_APP_API_BASE_URL); 
-      if(response.status == false){
+      if (response.status === false) {
         Swal.fire({
-        icon: "error",
-        title: "API Error",
-        text: response.message,
-      });
+          icon: "error",
+          title: "API Error",
+          text: response.message,
+        });
       }
     })
     .catch(error => {
       console.error("Error fetching todos:", error);
     });
 }, []);
-
-
 
  /* let todos1 = [
     {
@@ -44,7 +44,8 @@ useEffect(() => {
     <div className='row'>
       <div className='col-12'>
        {/*<TodoItem1 todosItems={todos1} />*/}
-       {<TodoItem todosItems={todos} />}
+       {/*<TodoItem todosItems={todos} />*/}
+        { <InformatioForm />}
       </div>
     </div>
   );
